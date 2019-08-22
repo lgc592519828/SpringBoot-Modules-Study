@@ -1,0 +1,32 @@
+
+# 主配置文件，用来配置不同环境间相同配置和切换环境配置文件
+# 1、若application.yml 中的配置在某一环境的配置文件中也存在，那么优先以application-*.yml为准
+#   所以通常不变的配置配置在application.yml中，需要切换环境的配置放在application-*.yml环境配置文件里。
+# 2、对于日志的环境切换：
+#    ① 更改默认的logback.xml 为 logback-spring.xml ， 当springBoot看到logback-spring.xml文件存在
+#      的时候，才会启动日志的环境切换，logback.xml文件无法做到
+#    ② 在需要切换的环境上添加springProfile标签
+
+
+
+#Server
+server:
+  servlet:
+    context-path: /mySpringBoot
+
+# 指定环境的配置文件
+#Spring
+spring:
+  http:
+    encoding:
+      charset: utf-8
+  thymeleaf:
+    cache: false
+  mvc:
+    date-format: yyyy-MM-dd
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss SSSSSS
+    time-zone: GMT+8
+  profiles:
+    active: dev
+

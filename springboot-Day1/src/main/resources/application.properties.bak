@@ -1,0 +1,38 @@
+#server
+# 端口
+server.port=8888
+# 应用上下文  localhost:8888/mySpringBoot
+# 一般情况下，小项目通常是在tomcat下部署多个webapp，通过上下文来区分
+# 在集群或者大中型项目中，通常我们一个tomcat对应一个webapp，然后通过不同接口来进行区分
+server.servlet.context-path=/mySpringBoot
+
+
+# spring
+# 默认字符集编码 UTF-8 只包含了20000+中文字符，生僻字显示不了。
+spring.http.encoding.charset=utf-8
+# 开始thymeleaf缓存(修改页面刷新后没有变化...)
+# 注意的是：除了设置cache = false外。还要设置IDEA file --> setting --> build -->complier --> Build Project auto.. 勾选才可以实现热部署
+spring.thymeleaf.cache=false
+#
+# MVC中对输入日期参数格式化
+spring.mvc.dateFormat=yyyy-MM-dd
+
+# 日期格式(yyyy-MM-dd，默认使用格林纳尼治时间，我们需要将它指定，否则输出日期格式不对，所以指定json序列化格式)
+spring.jackson.date-format=yyyy-MM-dd HH:mm:ss SSS
+# 设置JSON日期序列化输出格式，北京时间相对伦敦有8个小时时差所以使用GMT+8
+spring.jackson.time-zone=GMT+8
+
+# LOG 日志配置 (由于springBoot自带日志配置粒度不能满足生产环境，我们可以将logback日志配置文件直接放在resource下)
+# 日志输出的地址，springboot默认没有进行文件输出，只在控制台中进行了打印
+#logging.file=E:/logs/mySpringBoot.log
+# 日志级别   debug --> info --> warn --> error 默认为info，如果设置了debug=true时，会将日志自动降级到debug级别
+# ROOT 表示全局设置
+#logging.level.root=info
+# 设置指定包的输出级别 eg 指定org.springframework包级别为error
+#logging.level.org.springframework = error
+
+
+
+# debug 开启/关闭调试模式。
+debug=false
+

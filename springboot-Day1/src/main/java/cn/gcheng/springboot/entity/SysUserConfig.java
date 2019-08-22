@@ -1,0 +1,83 @@
+package cn.gcheng.springboot.entity;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ *
+ * @author gcheng.L
+ * @create 2019-08-21 14:37
+ */
+
+@Component
+@ConfigurationProperties(prefix = "user")
+public class SysUserConfig {
+
+    private String username;
+    private int age;
+    private String tel;
+
+    /**
+     * list 自定义配置
+     */
+    private List<String> books;
+
+    /**
+     * map 自定义配置
+     */
+    private Map<String, Object> wife;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public List<String> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<String> books) {
+        this.books = books;
+    }
+
+    public Map<String, Object> getWife() {
+        return wife;
+    }
+
+    public void setWife(Map<String, Object> wife) {
+        this.wife = wife;
+    }
+
+    @Override
+    public String toString() {
+        return "SysUserConfig{" +
+                "username='" + username + '\'' +
+                ", age=" + age +
+                ", tel='" + tel + '\'' +
+                ", books=" + books +
+                ", wife=" + wife +
+                '}';
+    }
+}
