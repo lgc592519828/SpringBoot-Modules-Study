@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>员工列表</title>
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet"></link>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <style type="text/css">
+        .pagination {
+            margin: 0px
+        }
+
+        .pagination > li > a, .pagination > li > span {
+            margin: 0 5px;
+            border: 1px solid #dddddd;
+        }
+
+        .glyphicon {
+            margin-right: 3px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container" style="text-align: center">
+        <h2>Thymeleaf 语法</h2>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div>
+            <ol class="breadcrumb" style="background-color:transparent;font-size: 20px">
+                <li><a href="#">首页</a></li>
+                <li class="active">实战案例</li>
+                <li class="active">thymeleaf模板引擎实战</li>
+            </ol>
+        </div>
+        <h1 style="text-align: center">员工信息表</h1>
+        <div class="panel panel-default">
+            <div class="clearfix panel-heading ">
+
+                <div class="input-group" style="width: 500px;">
+                    <input type="text" class="form-control" placeholder="请输入要查询的员工">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span>查询</button>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>员工编号</th>
+                    <th>姓名</th>
+                    <th>部门</th>
+                    <th>岗位</th>
+                    <th>入职时间</th>
+                    <th>工资</th>
+                    <th>奖金</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr style="background-color: lightgreen">
+                    <td>1</td>
+                    <td>5780</td>
+                    <td>DEAN</td>
+                    <td>市场部</td>
+                    <td>MANAGER</td>
+                    <td>1985年5月30日</td>
+                    <td>$300.00</td>
+                    <td>N/A</td>
+                    <td style="text-align: center">
+                        <button class="btn btn-xs btn-info"></span>详细</button>
+                        <button class="btn btn-xs btn-warning"></span>删除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>5781</td>
+                    <td>SAM</td>
+                    <td>研发部</td>
+                    <td>CLERK</td>
+                    <td>1975年3月6日</td>
+                    <td style="color: red;font-weight: bold">$3,300.00</td>
+                    <td>$650.00</td>
+                    <td style="text-align: center">
+                        <button class="btn btn-xs btn-info"></span>详细</button>
+                        <button class="btn btn-xs btn-warning"></span>删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
