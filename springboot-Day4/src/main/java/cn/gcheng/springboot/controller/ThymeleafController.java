@@ -16,6 +16,7 @@ import java.util.Map;
 
 /**
  * Thymeleaf Controller
+ * 主要用来练习Thymeleaf 常用语法，了解thymeleaf模版和语法即可。
  *
  */
 @Controller
@@ -24,6 +25,7 @@ public class ThymeleafController {
     private List<Emp> emps = new ArrayList<>();
     private List<Dept> depts = new ArrayList<>();
 
+    // 模拟数据
     public ThymeleafController() {
         emps.add(new Emp(7782, "CLARK", "MANAGER", 7839, "1981-06-09", 2450.00, null, 10, "ACCOUNTING"));
         emps.add(new Emp(7839, "KING", "PRESIDENT", null, "1981-11-17", 5000.00, null, 10, "ACCOUNTING"));
@@ -46,14 +48,22 @@ public class ThymeleafController {
 
     }
     @RequestMapping("/")
-    public ModelAndView index() {
-        Map param = new LinkedHashMap();
-//        param.put("keyword" , "all employee");
-//        param.put("deptno" , 20);
+    public ModelAndView index(String key) {
         ModelAndView mav = new ModelAndView("index");
-        mav.addObject("emps" , emps);
-//        mav.addObject("param", param);
-//        mav.addObject("depts" , depts);
+        List<Emp> filter = null;
+        if (key == null || key.trim().equals("")) {
+            // key为空，查询所有数据
+            filter = emps;
+        } else {
+            filter = new ArrayList<>();
+            for (Emp emp : emps) {
+                // 检索出带有key字母的员工
+                if (emp.getEname().toLowerCase().indexOf(key.toLowerCase()) != -1) {
+                    filter.add(emp);
+                }
+            }
+        }
+        mav.addObject("emps" , filter);
         return mav;
     }
 }
