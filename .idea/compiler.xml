@@ -7,6 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="springboot-Day1" />
+        <module name="springboot-Day4" />
+        <module name="springboot-Day5" />
         <module name="SpringBoot-Modules-Study" />
       </profile>
     </annotationProcessing>
