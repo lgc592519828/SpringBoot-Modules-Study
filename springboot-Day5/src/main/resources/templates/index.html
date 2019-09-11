@@ -54,7 +54,7 @@
                         // 清空dept所有选项
                         $("#dept").empty();
                         for (var i = 0; i < data.length; i++) {
-                            $("#dept").append("<option value='" + data[i].deptno + "'>" + data[i].dname + "</option>");
+                            $("#dept").append("<option value='" + data[i].dname + "'>" + data[i].dname + "</option>");
                         }
                     }
                 })
@@ -144,41 +144,43 @@
                 <h4 class="modal-title">Modal title</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="/create" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="empno">员工编号</label>
-                        <input type="text" class="form-control" id="empno" placeholder="请输入员工编号">
+                        <input type="text" class="form-control" id="empno" name="empno" placeholder="请输入员工编号">
                     </div>
                     <div class="form-group">
                         <label for="ename">员工姓名</label>
-                        <input type="text" class="form-control" id="ename" placeholder="请输入员工姓名">
+                        <input type="text" class="form-control" id="ename" name="ename" placeholder="请输入员工姓名">
                     </div>
                     <div class="form-group">
                         <label >部门</label>
-                        <select class="form-control" id="dept">
-                            <option>研发部</option>
+                        <select class="form-control" id="dept" name="dname">
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label >岗位</label>
-                        <select class="form-control" id="job">
+                        <select class="form-control" id="job" name="job">
                             <option>请选择</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="hiredate">入职时间</label>
-                        <input type="text" readonly class="form-control" id="hiredate" placeholder="请选择入职时间">
+                        <input type="text" readonly class="form-control" id="hiredate" name="hiredate" placeholder="请选择入职时间">
                     </div>
 					<div class="form-group">
                         <label for="sal">工资</label>
                         <input type="text" name="sal" class="form-control" id="sal" placeholder="请输入工资">
                     </div>
-					
+					<!-- 上传三个条件：
+					  1、post提交
+					  2、具备file组件
+					  3、设置表单的enctype="multipart/form-data"-->
                     <div class="form-group">
                         <label for="phone">员工照片</label>
-                        <input type="file" id="phone">
+                        <input type="file" id="phone" name="phone">
                     </div>
 					<div class="form-group" style="text-align: center;">
                         <button type="submit" class="btn btn-primary">保存</button>

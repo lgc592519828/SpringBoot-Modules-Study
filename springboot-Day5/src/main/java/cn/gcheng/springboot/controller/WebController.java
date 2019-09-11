@@ -2,32 +2,35 @@ package cn.gcheng.springboot.controller;
 
 import cn.gcheng.springboot.entity.Dept;
 import cn.gcheng.springboot.entity.Emp;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.jws.WebResult;
 import javax.servlet.http.HttpServletRequest;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
 public class WebController {
-    Logger logger = LoggerFactory.getLogger(WebController.class);
-    private List<Emp> emps = new ArrayList<Emp>();
-    private List<Dept> depts = new ArrayList<Dept>();
+    private List<Emp> emps = new ArrayList<>();
+    private List<Dept> depts = new ArrayList<>();
+    @Value("${app.upload.location}")
+    private String path =null;
+
 
     public WebController() {
         emps.add(new Emp(7782, "CLARK", "DEVELOPER", "2017-01-02", 7780f, "RESEARCH"));
         emps.add(new Emp(7839, "KING", "CSO", "2018-03-04", 8820f, "SALES"));
-        depts.add(new Dept(10,"REASERCH" , "2017-10-07"));
+        depts.add(new Dept(10,"RESEARCH" , "2017-10-07"));
         depts.add(new Dept(20,"SALES" , "2015-12-01"));
         depts.add(new Dept(30,"ACCOUNTING" , "2013-03-02"));
     }
@@ -93,19 +96,38 @@ public class WebController {
     @ResponseBody
     public List<String> obtainJob(String dept) {
         List<String> jobs = new ArrayList<>();
-        if ("10".equals(dept)) {
+        if ("RESEARCH".equals(dept)) {
             jobs.add("CTO");
             jobs.add("Programing");
-        } else if ("20".equals(dept)) {
+        } else if ("SALES".equals(dept)) {
             jobs.add("CSO");
             jobs.add("Saler");
-        } else if ("30".equals(dept)) {
+        } else if ("ACCOUNTING".equals(dept)) {
             jobs.add("CFO");
             jobs.add("Cashier");
         } else {
 
         }
         return jobs;
+    }
+
+    // @RequestParam("phone") 代表phone参数对应前端name="phone"的file框
+    @PostMapping("/create")
+    public ModelAndView create(Emp emp, @RequestParam("phone") MultipartFile phone) throws IOException {
+        // 原始文件名，为了防止文件名相同，采用时间戳
+        String fileName = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
+        String suffix = phone.getOriginalFilename().substring(phone.getOriginalFilename().lastIndexOf("."));
+        if (".jpg".equals(suffix)) {
+            throw new RuntimeException("无效的图片格式!");
+        }
+
+        // 将临时文件夹中的文件复制到指定目录
+        FileCopyUtils.copy(phone.getInputStream(), new FileOutputStream(path + fileName + suffix));
+        emp.setPhotoFile(fileName + suffix);
+        emps.add(emp);
+        // 请求转发到根路径地址
+        ModelAndView mav = new ModelAndView("redirect:/");
+        return mav;
     }
 
     /*
