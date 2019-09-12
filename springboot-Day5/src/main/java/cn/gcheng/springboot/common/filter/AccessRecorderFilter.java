@@ -28,6 +28,7 @@ public class AccessRecorderFilter implements Filter {
         // 过滤掉静态资源，最好配置在配置文件中读取。
         if (uri.endsWith(".css") || uri.endsWith(".js") || uri.endsWith(".map") || uri.endsWith(".jpg") || uri.endsWith(".woff")) {
             filterChain.doFilter(servletRequest, servletResponse);
+            return;
         }
         Long st = System.currentTimeMillis();
 
