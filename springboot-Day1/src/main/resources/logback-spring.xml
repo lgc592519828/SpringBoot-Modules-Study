@@ -10,12 +10,12 @@
 	<!--切换开发环境-->
     <springProfile name="dev">
         <!--定义日志保存的路径-->
-        <property name="LOG_HOME" value="E:/logs/dev/" />
+        <property name="LOG_HOME" value="D:/learning/logs/dev/" />
     </springProfile>
     <!--切换生产环境-->
     <springProfile name="prd">
         <!--定义日志保存的路径-->
-        <property name="LOG_HOME" value="E:/logs/prd/" />
+        <property name="LOG_HOME" value="D:/learning/logs/prd/" />
     </springProfile>
 
 
