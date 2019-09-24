@@ -38,8 +38,6 @@ public class AccessRecorderFilter implements Filter {
         Long et = System.currentTimeMillis();
         logger.info("uri:{},ip:{},time:{},ua:{}", uri, ip, et-st, ua);
 
-
-
     }
 
     @Override
