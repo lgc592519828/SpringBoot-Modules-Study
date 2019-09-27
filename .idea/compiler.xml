@@ -11,6 +11,7 @@
         <module name="springboot-Day5" />
         <module name="springboot-Day6" />
         <module name="springboot-Day7" />
+        <module name="springboot-Day8" />
         <module name="SpringBoot-Modules-Study" />
       </profile>
     </annotationProcessing>
