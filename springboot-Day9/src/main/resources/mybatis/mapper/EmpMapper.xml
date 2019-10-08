@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射文件配置，namespace指向接口-->
+<mapper namespace="cn.gcheng.springboot.mapper.EmpMapper">
+    <!--
+        select标签代表查询
+        findById要与接口中的方法名对应上
+    -->
+    <select id="findById" parameterType="Integer" resultType="cn.gcheng.springboot.entity.Emp">
+        select * from emp where empno = #{empno}
+    </select>
+
+</mapper>
