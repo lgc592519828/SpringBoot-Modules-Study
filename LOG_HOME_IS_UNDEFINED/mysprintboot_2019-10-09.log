@@ -1,0 +1,24 @@
+2019-10-09 18:11:44 INFO  [main]  c.g.s.SpringbootApplication - Starting SpringbootApplication on T7TYF9ZQGHYS78N with PID 12464 (E:\workspace\SpringBoot-Modules-Study\springboot-Day10\target\classes started by Administrator in E:\workspace\SpringBoot-Modules-Study)
+2019-10-09 18:11:44 INFO  [main]  c.g.s.SpringbootApplication - No active profile set, falling back to default profiles: default
+2019-10-09 18:11:46 INFO  [main]  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+2019-10-09 18:11:46 INFO  [main]  o.a.c.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2019-10-09 18:11:46 INFO  [main]  o.a.c.core.StandardService - Starting service [Tomcat]
+2019-10-09 18:11:46 INFO  [main]  o.a.c.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.24]
+2019-10-09 18:11:46 INFO  [main]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-09 18:11:46 INFO  [main]  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1732 ms
+2019-10-09 18:11:46 INFO  [main]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-09 18:11:47 INFO  [main]  o.a.c.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2019-10-09 18:11:47 INFO  [main]  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path ''
+2019-10-09 18:11:47 INFO  [main]  c.g.s.SpringbootApplication - Started SpringbootApplication in 3.932 seconds (JVM running for 4.443)
+2019-10-09 18:12:54 INFO  [main]  c.g.s.SpringbootApplication - Starting SpringbootApplication on T7TYF9ZQGHYS78N with PID 6392 (E:\workspace\SpringBoot-Modules-Study\springboot-Day10\target\classes started by Administrator in E:\workspace\SpringBoot-Modules-Study)
+2019-10-09 18:12:54 INFO  [main]  c.g.s.SpringbootApplication - No active profile set, falling back to default profiles: default
+2019-10-09 18:12:56 INFO  [main]  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+2019-10-09 18:12:56 INFO  [main]  o.a.c.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2019-10-09 18:12:56 INFO  [main]  o.a.c.core.StandardService - Starting service [Tomcat]
+2019-10-09 18:12:56 INFO  [main]  o.a.c.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.24]
+2019-10-09 18:12:56 INFO  [main]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-09 18:12:56 INFO  [main]  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1813 ms
+2019-10-09 18:12:56 INFO  [main]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-09 18:12:57 INFO  [main]  o.a.c.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2019-10-09 18:12:57 INFO  [main]  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path ''
+2019-10-09 18:12:57 INFO  [main]  c.g.s.SpringbootApplication - Started SpringbootApplication in 3.883 seconds (JVM running for 4.442)
