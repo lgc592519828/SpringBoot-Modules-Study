@@ -12,4 +12,41 @@
         select * from emp where empno = #{empno}
     </select>
 
+
+    <!--
+        resultType="java.util.Map" 代表将查询到的每一条记录包装成map， key就是字段名，value就是字段值
+        java.util.LinkedHashMap  与  Map 对比是有顺序的，
+    -->
+    <select id="findDepts" resultType="java.util.LinkedHashMap">
+        SELECT * FROM emp e , dept d where e.deptno = d.deptno
+        <if test="dname != null">
+            and d.dname =#{dname}
+        </if>
+        <if test="sal != null">
+            and e.sal >#{sal}
+        </if>
+    </select>
+
+    <!-- mysql 主键自增
+        selectKey 将id回填
+        SELECT LAST_INSERT_ID();  是mysql的内置函数，获取用户最新插入的id
+    -->
+    <insert id="save" parameterType="cn.gcheng.springboot.entity.Emp">
+        INSERT INTO emp(`ename`, `job`, `mgr`, `hiredate`, `sal`, `comm`, `deptno`)
+        VALUES (#{ename}, #{job}, #{mgr},  #{hiredate},  #{sal},  #{comm},  #{deptno})
+        <selectKey order="AFTER" keyColumn="empno" keyProperty="empno" resultType="Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+
+    </insert>
+
+    <update id="update" parameterType="cn.gcheng.springboot.entity.Emp">
+        UPDATE emp SET `ename` = #{ename}, `job` = #{job}, `mgr` = #{mgr}, `hiredate` = #{hiredate}, `sal` = #{sal}, `comm` = #{comm}, `deptno` = #{deptno}
+        WHERE `empno` = #{empno}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE from emp where empno = #{empno}
+    </delete>
+
 </mapper>
