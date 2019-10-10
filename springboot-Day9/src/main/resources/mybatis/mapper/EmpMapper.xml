@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--映射文件配置，namespace指向接口-->
-<mapper namespace="cn.gcheng.springboot.mapper.EmpMapper">
+<mapper namespace="cn.gcheng.springboot.mapper.master.EmpMapper">
     <!--
         select标签代表查询
         findById要与接口中的方法名对应上
