@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 
 /**
  * springBoot 与 MVC
+ * @author GchengLiu
  */
 @SpringBootApplication
 public class SpringbootApplication {
