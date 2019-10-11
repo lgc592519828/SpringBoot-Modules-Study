@@ -24,11 +24,14 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = {"cn.gcheng.springboot.mapper.master"}, sqlSessionFactoryRef = "masterSqlSessionFactory")
 public class MasterDataSourcesConfig {
 
+    /**
+     * 表示mapper.xml 映射地址，这一在配置文件中配置不同的位置
+     */
     @Value("${mybatis.mapper-locations}")
     private final String MAPPER_LOCAL = null;
 
     /**
-     * 注册 master 数据源
+     * 注册 master 数据源, @Primary标志这个 Bean 如果在多个同类 Bean 候选时，该 Bean 优先被考虑。
      * @return
      */
     @Primary

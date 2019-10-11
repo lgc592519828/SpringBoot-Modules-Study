@@ -8,13 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="springboot-Day1" />
         <module name="springboot-Day10" />
-        <module name="springboot-Day11" />
         <module name="springboot-Day4" />
         <module name="springboot-Day5" />
         <module name="springboot-Day6" />
         <module name="springboot-Day7" />
         <module name="springboot-Day8" />
         <module name="springboot-Day9" />
+        <module name="springboot-druidMoreDs" />
         <module name="SpringBoot-Modules-Study" />
       </profile>
     </annotationProcessing>
