@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * springBoot 整合 Druid 多数据源，配置相关监控
+ * @author GchengLiu
  */
 @SpringBootApplication
 public class SpringbootApplication {
