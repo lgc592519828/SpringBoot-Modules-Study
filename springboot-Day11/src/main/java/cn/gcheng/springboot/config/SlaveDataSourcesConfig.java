@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  * @create 2019-10-10 18:10
  */
 @Configuration
-@MapperScan(basePackages = {"com.example.springbootdruidmultsource.mapper.slave"}, sqlSessionFactoryRef = "slaveSqlSessionFactory")
+@MapperScan(basePackages = {"cn.gcheng.springboot.mapper.slave"}, sqlSessionFactoryRef = "slaveSqlSessionFactory")
 public class SlaveDataSourcesConfig {
 
     @Value("${mybatis.mapper-locations}")

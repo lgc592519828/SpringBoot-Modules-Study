@@ -48,8 +48,8 @@ public class MasterDataSourcesConfig {
         return new DataSourceTransactionManager(masterDataSourceBean());
     }
 
-    @Bean(name = "masterSqlSessionFactory")
     @Primary
+    @Bean(name = "masterSqlSessionFactory")
     public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource dataSource) throws Exception {
         final SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource);

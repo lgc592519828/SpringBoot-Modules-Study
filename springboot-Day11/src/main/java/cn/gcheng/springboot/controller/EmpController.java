@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author gcheng.L
@@ -27,16 +25,6 @@ public class EmpController {
         return empService.findById(id);
     }
 
-    @RequestMapping("/emp/auto/{id}")
-    public Emp empAutoFindById(@PathVariable("id") Integer id) {
-        return empService.findByAutoId(id);
-    }
-
-    @RequestMapping("/emp/list")
-    public List<Map> empAutoFindById(String dname, Float sal) {
-        return empService.findDepts(dname, sal);
-    }
-
     @RequestMapping("/emp/create")
     public Emp empCreate() {
         Emp emp = new Emp();
@@ -51,17 +39,5 @@ public class EmpController {
         return emp;
     }
 
-    @RequestMapping("/emp/update")
-    public Emp empUpdate() {
-        Emp emp = empService.findById(7938);
-        emp.setSal(emp.getSal() * 2);
-        empService.update(emp);
-        return emp;
-    }
 
-    @RequestMapping("/emp/delete/{id}")
-    public String empDelete(@PathVariable("id")Integer empno) {
-        empService.delete(empno);
-        return "Success!";
-    }
 }
