@@ -9,15 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 
 /**
  * Thymeleaf Controller
  * 主要用来练习Thymeleaf 常用语法，了解thymeleaf模版和语法即可。
- *
+ * @author Gcheng.Liu
  */
 @Controller
 public class ThymeleafController {
