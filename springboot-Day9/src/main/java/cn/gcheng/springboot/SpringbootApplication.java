@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * springBoot整合mybatis，@MapperScan扫描cn.gcheng.springboot.mapper该路径下的包进行注册
+ * @author GchengLiu
  */
 @SpringBootApplication
 @MapperScan("cn.gcheng.springboot.mapper")
