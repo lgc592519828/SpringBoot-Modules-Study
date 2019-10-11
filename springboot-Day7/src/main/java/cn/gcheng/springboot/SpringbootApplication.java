@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * springboot默认使用的是内嵌tomcat，修改这个默认服务器，使用jetty或者undertow启动服务
  *
- *
+ * @author GchengLiu
  */
 @SpringBootApplication
 public class SpringbootApplication {
