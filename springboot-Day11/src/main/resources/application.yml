@@ -57,7 +57,8 @@ spring:
         pool-prepared-statements: false
         # 设置过滤器，stat用于接收状态，wall用于防止SQL注入
         filters: stat,wall
-
+        # 支持合并多个DruidDataSource的监控数据
+        use-global-data-source-stat: true
         # Druid监控配置
         # WebStatFilter配置
         web-stat-filter:
@@ -88,9 +89,9 @@ spring:
           # 允许清空统计数据
           reset-enable: false
           # 配置登录用户名
-          login-username: administrator
+#          login-username: administrator
           # 配置登录密码
-          login-password: 123456
+#          login-password: 123456
           # 如果你需要做访问控制, 可以配置allow和deny这两个参数
           # deny优先于allow, 如果在deny列表中, 就算在allow列表中, 也会被拒绝. 如果allow没有配置或者为空, 则允许所有访问.
           allow: 127.0.0.1
@@ -130,6 +131,7 @@ spring:
             log-violation: true
             # 对被认为是攻击的SQL抛出SQLExcepton
             throw-exception: true
+
 
 # mybatis
 mybatis:

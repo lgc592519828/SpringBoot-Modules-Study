@@ -6,7 +6,6 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -14,6 +13,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
+import java.sql.SQLException;
 
 /**
  * 主库配置文件
@@ -22,13 +22,20 @@ import javax.sql.DataSource;
  */
 @Configuration
 @MapperScan(basePackages = {"cn.gcheng.springboot.mapper.master"}, sqlSessionFactoryRef = "masterSqlSessionFactory")
-public class MasterDataSourcesConfig {
+public class MasterDataSourcesConfig extends DataSourceConfig{
 
     /**
-     * 表示mapper.xml 映射地址，这一在配置文件中配置不同的位置
+     * 获取配置文件中数据库配置属性， 属性常量配置在父类中
      */
-    @Value("${mybatis.mapper-locations}")
-    private final String MAPPER_LOCAL = null;
+    @Value("${spring.datasource.druid.master.url}")
+    private String url;
+
+    @Value("${spring.datasource.druid.master.username}")
+    private String username;
+
+    @Value("${spring.datasource.druid.master.password}")
+    private String password;
+
 
     /**
      * 注册 master 数据源, @Primary标志这个 Bean 如果在多个同类 Bean 候选时，该 Bean 优先被考虑。
@@ -36,13 +43,23 @@ public class MasterDataSourcesConfig {
      */
     @Primary
     @Bean("masterDataSource")
-    @ConfigurationProperties("spring.datasource.druid.master")
     public DataSource masterDataSourceBean() {
-        return new DruidDataSource();
+        DruidDataSource ds = getDataSourceProperties();
+        ds.setUrl(url);
+        ds.setUsername(username);
+        ds.setPassword(password);
+        try {
+            ds.setFilters(filters);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ds;
     }
 
     /**
      * 注册 master 事务管理器
+     * 用来开启开启主库的事务@Transactional(rollbackFor = Exception.class,value = "masterTransactionManager") value 可以省略
      * @return
      */
     @Primary
