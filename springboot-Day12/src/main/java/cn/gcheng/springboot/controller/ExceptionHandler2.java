@@ -31,7 +31,7 @@ public class ExceptionHandler2 {
     public ModelAndView nullExceptionHanlder(Exception e) {
         ModelAndView mv = new ModelAndView();
         mv.addObject("error", "ExceptionHandler2: "+e.toString());
-        mv.setViewName("/handler2/error1");
+        mv.setViewName("/handler/error");
         return mv;
     }
 
