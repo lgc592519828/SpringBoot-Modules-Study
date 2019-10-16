@@ -1,0 +1,147 @@
+server:
+  port: 8888
+debug: false
+
+spring:
+
+  # json 输出格式化与时间格式化
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss SSS
+    time-zone: GMT+8
+    serialization:
+      indent-output: true
+  mvc:
+    date-format: yyyy-MM-dd
+
+  # datasource
+  datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      druid:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        # 主库数据源
+        master:
+          url: jdbc:mysql://localhost:3306/scott?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
+          username: root
+          password: 123456
+
+        # 从库数据源
+        slave:
+          url: jdbc:mysql://localhost:3306/shiro?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
+          username: root
+          password: 123456
+
+        # Druid连接池配置
+        # 数据库类型为mysql
+        db-type: mysql
+        # 启动时初始化5个连接
+        initialSize: 5
+        # 最小空闲连接5个
+        min-idle: 5
+        # 最大连接数量20
+        max-active: 20
+        # 获取连接等待时间60秒，超出报错
+        max-wait: 60000
+        # 每60秒执行一次连接回收器
+        time-between-eviction-runs-millis: 60000
+        # 5分钟内没有任何操作的空闲连接会被回收
+        min-evictable-idle-time-millis: 300000
+        # 验证连接有效性的SQL
+        validation-query: select 'x'
+        # 空闲时校验，建议开启
+        test-while-idle: true
+        # 使用中是否校验有效性，推荐关闭
+        test-on-borrow: false
+        # 归还连接时校验有效性，推荐关闭
+        test-on-return: false
+        # oracle 推荐使用
+        pool-prepared-statements: false
+        # 设置过滤器，stat用于接收状态，wall用于防止SQL注入
+        filters: stat,wall
+        # 支持合并多个DruidDataSource的监控数据
+        use-global-data-source-stat: true
+        # Druid监控配置
+        # WebStatFilter配置
+        web-stat-filter:
+          # 是否启用StatFilter, 默认值true
+          enabled: true
+          # URL白名单
+          url-pattern: /*
+          # 过滤器排除掉的静态资源,yml配置需要用引号""
+          exclusions:  "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+          # session 统计功能
+          session-stat-enable: false
+          # 最大session数
+          session-stat-max-count: 1000
+          # 你可以配置principalSessionName, 使得druid能够知道当前的session的用户是谁
+          principal-session-name: administrator
+          # druid能够知道当前的cookie的用户是谁
+          principal-cookie-name: administrator
+          # 配置profileEnable能够监控单个url调用的sql列表
+          profile-enable: true
+
+        # StatViewServlet配置 :展示Druid的统计信息, StatViewServlet的用途包括: 1.提供监控信息展示的html页面; 2.提供监控信息的JSON API
+        stat-view-servlet:
+
+          # 是否启用StatViewServlet, 默认值true
+          enabled: true
+          # 根据配置中的url-pattern来访问内置监控页面，内置监控页面的地址是{上下文}/druid
+          url-pattern: /druid/*
+          # 允许清空统计数据
+          reset-enable: false
+          # 配置登录用户名
+#          login-username: administrator
+          # 配置登录密码
+#          login-password: 123456
+          # 如果你需要做访问控制, 可以配置allow和deny这两个参数
+          # deny优先于allow, 如果在deny列表中, 就算在allow列表中, 也会被拒绝. 如果allow没有配置或者为空, 则允许所有访问.
+          allow: 127.0.0.1
+          deny: 10.1.1.110
+
+        filter:
+          stat:
+            # 是否启用statFilter
+            enabled: true
+            # 数据库类型
+            db-type: mysql
+            # 是否开启慢sql日志，针对执行效率低的SQL记录日志
+            log-slow-sql: true
+            # 设置超过指定时间为慢SQL
+            slow-sql-millis: 2000
+
+          # WallFilter配置
+          wall:
+            # 是否启用WallFilter, 默认值true
+            enabled: true
+            # 数据库类型
+            db-type: mysql
+            config:
+              delete-allow: false
+              drop-table-allow: false
+              alter-table-allow: false
+              truncate-allow: false
+              # 是否允许非以上基本语句的其他语句, 缺省关闭, 通过这个选项就能够屏蔽DDL
+              none-base-statement-allow: false
+              # 检查UPDATE语句是否无where条件, 这是有风险的, 但不是SQL注入类型的风险
+              update-where-none-check: true
+              # SELECT ... INTO OUTFILE 是否允许, 缺省是禁止的
+              select-into-outfile-allow: false
+              # 是否允许调用Connection.getMetadata方法, 这个方法调用会暴露数据库的表信息
+              metadata-allow: true
+            # 对被认为是攻击的SQL进行LOG.error输出
+            log-violation: true
+            # 对被认为是攻击的SQL抛出SQLExcepton
+            throw-exception: true
+
+
+# mybatis
+mybatis:
+  # 核心配置文件，指定的是mybatis-config.xml
+  config-location: classpath:/mybatis/mybatis-config.xml
+  # 指定mapper映射文件,全注解方式不需要
+  mapper-locations: classpath:/mybatis/mapper/*Mapper.xml
+
+# 打印sql
+logging:
+  level:
+     cn.gcheng.springboot.mapper : debug
+

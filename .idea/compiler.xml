@@ -8,11 +8,22 @@
         <outputRelativeToContentRoot value="true" />
         <module name="springboot" />
         <module name="springboot-Day1" />
+        <module name="springboot-Day10" />
+        <module name="springboot-Day11" />
+        <module name="springboot-Day12" />
         <module name="springboot-Day4" />
         <module name="springboot-Day5" />
+        <module name="springboot-Day6" />
+        <module name="springboot-Day7" />
+        <module name="springboot-Day8" />
+        <module name="springboot-Day9" />
         <module name="SpringBoot-Modules-Study" />
+        <module name="springbootDay12" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springbootDay12" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

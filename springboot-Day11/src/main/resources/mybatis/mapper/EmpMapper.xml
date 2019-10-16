@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gcheng.springboot.mapper.master.EmpMapper">
+    <select id="findById" parameterType="Integer" resultType="cn.gcheng.springboot.entity.Emp">
+        select * from emp where empno = #{empno}
+    </select>
+
+    <insert id="save" parameterType="cn.gcheng.springboot.entity.Emp">
+        INSERT INTO emp(`ename`, `job`, `mgr`, `hiredate`, `sal`, `comm`, `deptno`)
+        VALUES (#{ename}, #{job}, #{mgr},  #{hiredate},  #{sal},  #{comm},  #{deptno})
+        <selectKey order="AFTER" keyColumn="empno" keyProperty="empno" resultType="Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+
+    </insert>
+</mapper>

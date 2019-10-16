@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gcheng.springboot.mapper.slave.SysUserMapper">
+
+    <select id="findUserById" parameterType="String" resultType="cn.gcheng.springboot.entity.SysUser">
+        select * from sys_user where id = #{id}
+    </select>
+
+    <insert id="create" parameterType="cn.gcheng.springboot.entity.SysUser">
+      INSERT INTO sys_user(`username`, `password`, `locked`)
+      VALUES (#{username}, #{password}, 0);
+      <selectKey keyColumn="id" keyProperty="id" resultType="String" order="AFTER">
+          SELECT LAST_INSERT_ID()
+      </selectKey>
+    </insert>
+</mapper>
