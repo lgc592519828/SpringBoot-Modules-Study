@@ -1,8 +1,13 @@
-package cn.gcheng.springboot.proDemo.common;
+package cn.gcheng.springboot.prodemo.common.result;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 
+/**
+ * 请求返回数据格式
+ * @param <T>
+ * @author GchengLiu
+ */
 public class Result<T> {
     private Integer code;
     private String resMsg;
@@ -43,6 +48,7 @@ public class Result<T> {
         return features == null ? this.toJson() : JSON.toJSONString(this, features);
     }
 
+    @Override
     public String toString() {
         return "Result{code=" + this.code + ", resMsg='" + this.resMsg + '\'' + ", data=" + this.data + '}';
     }
