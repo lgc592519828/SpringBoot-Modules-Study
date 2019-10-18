@@ -4,9 +4,10 @@ package cn.gcheng.springboot.prodemo.common.exception;
  * 返回状态枚举类
  * @author GchengLiu
  */
+
 public enum ExceptionEnum {
     /**
-     * 添加异常类型代码与信息枚举
+     * 添加异常类型代码与信息枚举,可以多添加一些。
      */
     SUCCESS(0000, "请求成功"),
     FAIL(1000, "请求失败"),

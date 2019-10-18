@@ -9,5 +9,9 @@ spring:
     time-zone: GMT+8
     serialization:
       indent-output: true
+    # json 过滤掉返回为null的字段
+    default-property-inclusion: non_null
   mvc:
     static-path-pattern: /static/**
+    # 捕获404异常，
+    throw-exception-if-no-handler-found: true

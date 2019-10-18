@@ -29,6 +29,7 @@ public class GlobalException4Handler4 {
         // 参数一：异常的类型，注意必须是异常类型的全名 参数二：视图名称
         properties.put("java.lang.NullPointerException",errorPath);
         properties.put("java.lang.ArithmeticException",errorPath);
+        // 添加其他异常类型...
 
         // 设置异常与视图映射信息的
         resolver.setExceptionMappings(properties);

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class GlobalException {
     private static  String errorPath = "/handler/error";
     /**
-     * 用于拦截本类的java.lang.NullPointerException异常
+     * 用于拦截java.lang.NullPointerException异常
      * 该方法需要返回一个 ModelAndView：目的是可以让我们封装异常信息以及视图的指定
      * 参数 Exception e:会将产生异常对象注入到方法中
      */
@@ -26,5 +26,9 @@ public class GlobalException {
         mv.setViewName(errorPath);
         return mv;
     }
+
+    /**
+     * 编写拦截其他异常的方法....
+     */
 
 }

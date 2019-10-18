@@ -34,6 +34,7 @@ public class GlobalException4Handler5 implements HandlerExceptionResolver {
         if(ex instanceof NullPointerException){
             mv.setViewName(errorPath);
         }
+        // 添加其他异常类型...
         mv.addObject("error", "Exception5: "+ex.toString());
 
         return mv;
